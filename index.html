@@ -6,15 +6,10 @@
 
     <title>ELAF | Elegance in Every Thread</title>
 
-    <meta name="description"
-        content="ELAF - Premium modest fashion, elegant abayas, hijabs and timeless modest wear.">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -23,43 +18,29 @@
 
 <!-- ================= NAVBAR ================= -->
 
-<header class="navbar">
+<header class="navbar" id="navbar">
 
-    <div class="nav-container">
+    <div class="logo">
+        <span>ELAF</span>
+        <small>Elegance in Every Thread</small>
+    </div>
 
-        <a href="#home" class="logo">
-            <span>ELAF</span>
-            <small>Elegance in Every Thread</small>
-        </a>
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#abayas">Abayas</a>
+        <a href="#hijabs">Hijabs</a>
+        <a href="#story">Our Story</a>
+    </nav>
 
-        <nav class="nav-links">
+    <div class="nav-actions">
+        <button id="searchBtn" class="icon-btn">⌕</button>
 
-            <a href="#home">Home</a>
-            <a href="#collections">Collections</a>
-            <a href="#new-arrivals">New Arrivals</a>
-            <a href="#story">Our Story</a>
+        <button id="bagBtn" class="bag-btn">
+            Bag <span id="bagCount">0</span>
+        </button>
 
-        </nav>
-
-        <div class="nav-actions">
-
-            <button class="icon-btn" id="searchBtn" aria-label="Search">
-                <span>⌕</span>
-            </button>
-
-            <button class="bag-btn" id="bagBtn">
-                Bag
-                <span id="bagCount">0</span>
-            </button>
-
-            <button class="menu-btn" id="menuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-        </div>
-
+        <button id="menuBtn" class="menu-btn">☰</button>
     </div>
 
 </header>
@@ -74,14 +55,12 @@
         <input
             type="text"
             id="searchInput"
-            placeholder="Search abayas, fabrics, collections..."
+            placeholder="Search abayas, hijabs, fabrics..."
         >
 
         <button id="closeSearch">×</button>
 
     </div>
-
-    <div id="searchResults" class="search-results"></div>
 
 </div>
 
@@ -94,36 +73,30 @@
 
     <div class="hero-content">
 
-        <p class="eyebrow">THE ELAF EDIT</p>
+        <p class="eyebrow">MODEST • ELEGANT • TIMELESS</p>
 
         <h1>ELAF</h1>
 
         <h2>Elegance in Every Thread</h2>
 
-        <p class="hero-description">
-            Modesty, beautifully reimagined.
-            Discover graceful abayas and timeless modest wear
-            created for the modern Muslim woman.
+        <p>
+            Discover thoughtfully designed modest wear,
+            graceful abayas and beautiful hijabs made for
+            effortless elegance.
         </p>
 
         <div class="hero-buttons">
 
-            <a href="#new-arrivals" class="btn btn-light">
-                Shop Collection
+            <a href="#abayas" class="btn btn-dark">
+                Explore Abayas
             </a>
 
-            <a href="#story" class="btn btn-outline">
-                Explore ELAF
+            <a href="#hijabs" class="btn btn-light">
+                Explore Hijabs
             </a>
 
         </div>
 
-    </div>
-
-    <div class="hero-bottom">
-        <span>MODEST</span>
-        <span>TIMELESS</span>
-        <span>ELEGANT</span>
     </div>
 
 </section>
@@ -131,25 +104,18 @@
 
 <!-- ================= INTRO ================= -->
 
-<section class="intro section-padding">
+<section class="intro section">
 
-    <div class="intro-small">
-        EST. 2026
-    </div>
+    <div class="section-heading">
 
-    <div class="intro-text">
+        <p class="eyebrow">THE ELAF EDIT</p>
 
-        <h2>
-            Designed for
-            <em>grace.</em>
-        </h2>
+        <h2>Modesty, beautifully reimagined.</h2>
 
         <p>
-            ELAF is a modest fashion concept built around
-            simplicity, elegance and timeless Islamic wear.
-            From flowing abayas to refined everyday pieces,
-            every collection is designed to make modesty feel
-            effortlessly beautiful.
+            From flowing abayas to carefully selected hijabs,
+            ELAF brings together timeless silhouettes,
+            elegant fabrics and refined colours.
         </p>
 
     </div>
@@ -159,113 +125,61 @@
 
 <!-- ================= COLLECTIONS ================= -->
 
-<section class="collections section-padding" id="collections">
+<section class="collections section" id="collections">
 
-    <div class="section-heading">
+    <div class="section-title">
 
-        <div>
-            <span class="eyebrow">EXPLORE</span>
-            <h2>Our Collections</h2>
-        </div>
+        <p class="eyebrow">EXPLORE</p>
 
-        <p>
-            Carefully selected modest pieces
-            for every chapter of her day.
-        </p>
+        <h2>Our Collections</h2>
 
     </div>
-
 
     <div class="collection-grid">
 
-        <!-- ABAYAS -->
+        <a href="#abayas" class="collection-card">
 
-        <a href="#new-arrivals" class="collection-card">
+            <img
+                src="https://s.alicdn.com/%40sc04/kf/H305b2df6aee34366a69d737ce1c2b973k/HANO-Wholesale-Dubai-Solid-Color-Simple-Modest-Musulman-Islamic-Clothing-Black-Abaya-Muslim-Dresses-for-Women-Abaya.jpg"
+                alt="ELAF Abayas"
+            >
 
-            <div class="collection-image">
-
-                <img
-                    src="https://s.alicdn.com/%40sc04/kf/H305b2df6aee34366a69d737ce1c2b973k/HANO-Wholesale-Dubai-Solid-Color-Simple-Modest-Musulman-Islamic-Clothing-Black-Abaya-Muslim-Dresses-for-Women-Abaya.jpg"
-                    alt="ELAF Abaya Collection"
-                >
-
-            </div>
-
-            <div class="collection-info">
-
-                <span>01</span>
-
+            <div class="collection-content">
+                <p>01</p>
                 <h3>Abayas</h3>
-
-                <p>
-                    Flowing silhouettes in elegant,
-                    modest designs.
-                </p>
-
-                <strong>Discover →</strong>
-
+                <span>Discover Collection →</span>
             </div>
 
         </a>
 
 
-        <!-- MODEST WEAR -->
+        <a href="#hijabs" class="collection-card">
 
-        <a href="#new-arrivals" class="collection-card">
+            <img
+                src="https://layaancollection.com/cdn/shop/files/IMG_0455.jpg?v=1727965171&width=1780"
+                alt="ELAF Hijabs"
+            >
 
-            <div class="collection-image">
-
-                <img
-                    src="https://hasanatboutique.com/cdn/shop/files/21_05455fea-6c8c-41cf-8f78-1a702d2a02ef.png?v=1771875713&width=1200"
-                    alt="ELAF Modest Abayas"
-                >
-
-            </div>
-
-            <div class="collection-info">
-
-                <span>02</span>
-
-                <h3>Modest Wear</h3>
-
-                <p>
-                    Comfortable pieces designed
-                    around modest elegance.
-                </p>
-
-                <strong>Discover →</strong>
-
+            <div class="collection-content">
+                <p>02</p>
+                <h3>Hijabs</h3>
+                <span>Discover Collection →</span>
             </div>
 
         </a>
 
 
-        <!-- OCCASION -->
+        <a href="#occasion" class="collection-card">
 
-        <a href="#new-arrivals" class="collection-card">
+            <img
+                src="https://s.alicdn.com/%40sc04/kf/Hc3c70f31b644473aa10b93195754faf6X/Simple-Daily-Perfect-Wear-Closed-Abaya-for-Muslim-Women-Multi-Colors.jpg"
+                alt="ELAF Occasion Edit"
+            >
 
-            <div class="collection-image">
-
-                <img
-                    src="https://s.alicdn.com/%40sc04/kf/Hc3c70f31b644473aa10b93195754faf6X/Simple-Daily-Perfect-Wear-Closed-Abaya-for-Muslim-Women-Multi-Colors.jpg"
-                    alt="ELAF Occasion Abayas"
-                >
-
-            </div>
-
-            <div class="collection-info">
-
-                <span>03</span>
-
+            <div class="collection-content">
+                <p>03</p>
                 <h3>Occasion Edit</h3>
-
-                <p>
-                    Refined abayas for meaningful
-                    moments and occasions.
-                </p>
-
-                <strong>Discover →</strong>
-
+                <span>Discover Collection →</span>
             </div>
 
         </a>
@@ -275,71 +189,28 @@
 </section>
 
 
-<!-- ================= FABRIC BANNER ================= -->
+<!-- ================= ABAYA SECTION ================= -->
 
-<section class="fabric-banner">
+<section class="products-section section" id="abayas">
 
-    <div class="fabric-image"></div>
+    <div class="section-title">
 
-    <div class="fabric-overlay"></div>
+        <p class="eyebrow">ELAF ABAYAS</p>
 
-    <div class="fabric-content">
-
-        <span class="eyebrow">THE FABRIC EDIT</span>
-
-        <h2>
-            Soft textures.
-            <br>
-            Beautiful drape.
-        </h2>
+        <h2>Graceful Abayas</h2>
 
         <p>
-            Discover our carefully selected fabrics,
-            from graceful Georgette to luxurious
-            Korean fabric.
-        </p>
-
-        <a href="#new-arrivals" class="text-link">
-            Explore Fabrics →
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= NEW ARRIVALS ================= -->
-
-<section class="products-section section-padding" id="new-arrivals">
-
-    <div class="section-heading">
-
-        <div>
-
-            <span class="eyebrow">NEW SEASON</span>
-
-            <h2>New Arrivals</h2>
-
-        </div>
-
-        <p>
-            Elegant abayas and modest essentials
-            selected for the ELAF woman.
+            Choose your colour, fabric, length and size
+            according to your preference.
         </p>
 
     </div>
 
 
-    <!-- FILTERS -->
-
-    <div class="filters">
+    <div class="filter-bar">
 
         <button class="filter-btn active" data-filter="all">
             All
-        </button>
-
-        <button class="filter-btn" data-filter="abaya">
-            Abayas
         </button>
 
         <button class="filter-btn" data-filter="georgette">
@@ -357,17 +228,17 @@
     </div>
 
 
-    <!-- PRODUCT GRID -->
+    <div class="product-grid" id="abayaGrid">
 
-    <div class="product-grid" id="productGrid">
-
-
-        <!-- PRODUCT 1 -->
+        <!-- ABAYA 1 -->
 
         <article
             class="product-card"
-            data-category="abaya georgette"
+            data-category="georgette"
+            data-type="abaya"
             data-name="Noor Georgette Abaya"
+            data-price="6490"
+            data-image="https://s.alicdn.com/%40sc04/kf/H305b2df6aee34366a69d737ce1c2b973k/HANO-Wholesale-Dubai-Solid-Color-Simple-Modest-Musulman-Islamic-Clothing-Black-Abaya-Muslim-Dresses-for-Women-Abaya.jpg"
         >
 
             <div class="product-image">
@@ -377,32 +248,20 @@
                     alt="Noor Georgette Abaya"
                 >
 
-                <span class="product-tag">NEW</span>
-
-                <button class="wishlist" aria-label="Add to wishlist">
-                    ♡
-                </button>
+                <span class="product-tag">BESTSELLER</span>
 
             </div>
 
             <div class="product-info">
 
-                <span class="product-type">
-                    GEORGETTE
-                </span>
+                <p class="product-type">GEORGETTE</p>
 
                 <h3>Noor Georgette Abaya</h3>
 
-                <p class="price">
-                    PKR 6,490
-                </p>
+                <p class="price">PKR 6,490</p>
 
-                <button
-                    class="add-btn"
-                    data-product="Noor Georgette Abaya"
-                    data-price="6490"
-                >
-                    Add to Bag
+                <button class="customize-btn">
+                    Customize & Add
                 </button>
 
             </div>
@@ -410,12 +269,15 @@
         </article>
 
 
-        <!-- PRODUCT 2 -->
+        <!-- ABAYA 2 -->
 
         <article
             class="product-card"
-            data-category="abaya korean"
+            data-category="korean"
+            data-type="abaya"
             data-name="Meher Korean Abaya"
+            data-price="7290"
+            data-image="https://s.alicdn.com/%40sc04/kf/Hc3c70f31b644473aa10b93195754faf6X/Simple-Daily-Perfect-Wear-Closed-Abaya-for-Muslim-Women-Multi-Colors.jpg"
         >
 
             <div class="product-image">
@@ -425,32 +287,18 @@
                     alt="Meher Korean Abaya"
                 >
 
-                <span class="product-tag">BESTSELLER</span>
-
-                <button class="wishlist" aria-label="Add to wishlist">
-                    ♡
-                </button>
-
             </div>
 
             <div class="product-info">
 
-                <span class="product-type">
-                    KOREAN FABRIC
-                </span>
+                <p class="product-type">KOREAN FABRIC</p>
 
                 <h3>Meher Korean Abaya</h3>
 
-                <p class="price">
-                    PKR 7,290
-                </p>
+                <p class="price">PKR 7,290</p>
 
-                <button
-                    class="add-btn"
-                    data-product="Meher Korean Abaya"
-                    data-price="7290"
-                >
-                    Add to Bag
+                <button class="customize-btn">
+                    Customize & Add
                 </button>
 
             </div>
@@ -458,12 +306,15 @@
         </article>
 
 
-        <!-- PRODUCT 3 -->
+        <!-- ABAYA 3 -->
 
         <article
             class="product-card"
-            data-category="abaya modest"
+            data-category="georgette"
+            data-type="abaya"
             data-name="Ayla Flowing Abaya"
+            data-price="6890"
+            data-image="https://hasanatboutique.com/cdn/shop/files/21_05455fea-6c8c-41cf-8f78-1a702d2a02ef.png?v=1771875713&width=1200"
         >
 
             <div class="product-image">
@@ -473,30 +324,18 @@
                     alt="Ayla Flowing Abaya"
                 >
 
-                <button class="wishlist" aria-label="Add to wishlist">
-                    ♡
-                </button>
-
             </div>
 
             <div class="product-info">
 
-                <span class="product-type">
-                    MODEST WEAR
-                </span>
+                <p class="product-type">GEORGETTE</p>
 
                 <h3>Ayla Flowing Abaya</h3>
 
-                <p class="price">
-                    PKR 6,890
-                </p>
+                <p class="price">PKR 6,890</p>
 
-                <button
-                    class="add-btn"
-                    data-product="Ayla Flowing Abaya"
-                    data-price="6890"
-                >
-                    Add to Bag
+                <button class="customize-btn">
+                    Customize & Add
                 </button>
 
             </div>
@@ -504,12 +343,15 @@
         </article>
 
 
-        <!-- PRODUCT 4 -->
+        <!-- ABAYA 4 -->
 
         <article
             class="product-card"
-            data-category="modest georgette"
+            data-category="modest"
+            data-type="abaya"
             data-name="Raya Modest Abaya"
+            data-price="5890"
+            data-image="https://hijabjunkie.com/cdn/shop/files/IMG_7230-scaled.jpg?v=1724425553&width=1946"
         >
 
             <div class="product-image">
@@ -519,30 +361,18 @@
                     alt="Raya Modest Abaya"
                 >
 
-                <button class="wishlist" aria-label="Add to wishlist">
-                    ♡
-                </button>
-
             </div>
 
             <div class="product-info">
 
-                <span class="product-type">
-                    MODEST WEAR
-                </span>
+                <p class="product-type">MODEST WEAR</p>
 
                 <h3>Raya Modest Abaya</h3>
 
-                <p class="price">
-                    PKR 5,890
-                </p>
+                <p class="price">PKR 5,890</p>
 
-                <button
-                    class="add-btn"
-                    data-product="Raya Modest Abaya"
-                    data-price="5890"
-                >
-                    Add to Bag
+                <button class="customize-btn">
+                    Customize & Add
                 </button>
 
             </div>
@@ -550,12 +380,15 @@
         </article>
 
 
-        <!-- PRODUCT 5 -->
+        <!-- ABAYA 5 -->
 
         <article
             class="product-card"
-            data-category="abaya korean"
+            data-category="korean"
+            data-type="abaya"
             data-name="Sahar Korean Abaya"
+            data-price="7590"
+            data-image="https://s.alicdn.com/%40sc04/kf/Ha52ea7c3fefd4a13969de97a323c71b1t/SharutLow-Price-Latest-Turkey-Dubai-Solid-Color-Abaya-Kaftan-3pcs-Set-Abaya-Women-Muslims-Dress-Open-Abaya-With-a-Free-Scarf.jpg"
         >
 
             <div class="product-image">
@@ -565,32 +398,18 @@
                     alt="Sahar Korean Abaya"
                 >
 
-                <span class="product-tag">NEW</span>
-
-                <button class="wishlist" aria-label="Add to wishlist">
-                    ♡
-                </button>
-
             </div>
 
             <div class="product-info">
 
-                <span class="product-type">
-                    KOREAN FABRIC
-                </span>
+                <p class="product-type">KOREAN FABRIC</p>
 
                 <h3>Sahar Korean Abaya</h3>
 
-                <p class="price">
-                    PKR 7,590
-                </p>
+                <p class="price">PKR 7,590</p>
 
-                <button
-                    class="add-btn"
-                    data-product="Sahar Korean Abaya"
-                    data-price="7590"
-                >
-                    Add to Bag
+                <button class="customize-btn">
+                    Customize & Add
                 </button>
 
             </div>
@@ -598,12 +417,15 @@
         </article>
 
 
-        <!-- PRODUCT 6 -->
+        <!-- ABAYA 6 -->
 
         <article
             class="product-card"
-            data-category="abaya modest"
+            data-category="modest"
+            data-type="abaya"
             data-name="Haya Signature Abaya"
+            data-price="7990"
+            data-image="https://s.alicdn.com/%40sc04/kf/Ha52ea7c3fefd4a13969de97a323c71b1t/SharutLow-Price-Latest-Turkey-Dubai-Solid-Color-Abaya-Kaftan-3pcs-Set-Abaya-Women-Muslims-Dress-Open-Abaya-With-a-Free-Scarf.jpg"
         >
 
             <div class="product-image">
@@ -613,30 +435,20 @@
                     alt="Haya Signature Abaya"
                 >
 
-                <button class="wishlist" aria-label="Add to wishlist">
-                    ♡
-                </button>
+                <span class="product-tag">SIGNATURE</span>
 
             </div>
 
             <div class="product-info">
 
-                <span class="product-type">
-                    SIGNATURE ABAYA
-                </span>
+                <p class="product-type">MODEST WEAR</p>
 
                 <h3>Haya Signature Abaya</h3>
 
-                <p class="price">
-                    PKR 7,990
-                </p>
+                <p class="price">PKR 7,990</p>
 
-                <button
-                    class="add-btn"
-                    data-product="Haya Signature Abaya"
-                    data-price="7990"
-                >
-                    Add to Bag
+                <button class="customize-btn">
+                    Customize & Add
                 </button>
 
             </div>
@@ -648,19 +460,229 @@
 </section>
 
 
-<!-- ================= BRAND STATEMENT ================= -->
+<!-- ================= HIJAB SECTION ================= -->
 
-<section class="statement">
+<section class="hijab-section section" id="hijabs">
 
-    <div class="statement-content">
+    <div class="hijab-intro">
 
-        <span>ELAF</span>
+        <div>
 
-        <h2>
-            Modesty is not a limitation.
-            <br>
-            It is an <em>elegance.</em>
-        </h2>
+            <p class="eyebrow">ELAF HIJABS</p>
+
+            <h2>The Hijab Edit</h2>
+
+            <p>
+                Soft textures, graceful colours and flexible
+                lengths. Create your own hijab combination.
+            </p>
+
+        </div>
+
+        <a href="#hijabs" class="text-link">
+            View All Hijabs →
+        </a>
+
+    </div>
+
+
+    <div class="product-grid">
+
+        <!-- HIJAB 1 -->
+
+        <article
+            class="product-card"
+            data-category="hijab"
+            data-type="hijab"
+            data-name="Aira Georgette Hijab"
+            data-price="899"
+            data-image="https://i.etsystatic.com/18952049/r/il/57b25c/2742859154/il_fullxfull.2742859154_jnab.jpg"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://i.etsystatic.com/18952049/r/il/57b25c/2742859154/il_fullxfull.2742859154_jnab.jpg"
+                    alt="Aira Georgette Hijab"
+                >
+
+                <span class="product-tag">NEW</span>
+
+            </div>
+
+            <div class="product-info">
+
+                <p class="product-type">GEORGETTE</p>
+
+                <h3>Aira Georgette Hijab</h3>
+
+                <p class="price">PKR 899</p>
+
+                <button class="customize-btn">
+                    Customize & Add
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- HIJAB 2 -->
+
+        <article
+            class="product-card"
+            data-category="hijab"
+            data-type="hijab"
+            data-name="Maira Soft Hijab"
+            data-price="799"
+            data-image="https://www.shophatun.com/cdn/shop/articles/119631702_2833687363510083_3115142229310345150_n_42a595c4-b1df-41f5-b6cf-b27c8868f942.jpg?v=1750142783"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://www.shophatun.com/cdn/shop/articles/119631702_2833687363510083_3115142229310345150_n_42a595c4-b1df-41f5-b6cf-b27c8868f942.jpg?v=1750142783"
+                    alt="Maira Soft Hijab"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <p class="product-type">SOFT CHIFFON</p>
+
+                <h3>Maira Soft Hijab</h3>
+
+                <p class="price">PKR 799</p>
+
+                <button class="customize-btn">
+                    Customize & Add
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- HIJAB 3 -->
+
+        <article
+            class="product-card"
+            data-category="hijab"
+            data-type="hijab"
+            data-name="Zoya Neutral Hijab"
+            data-price="849"
+            data-image="https://layaancollection.com/cdn/shop/files/IMG_0455.jpg?v=1727965171&width=1780"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://layaancollection.com/cdn/shop/files/IMG_0455.jpg?v=1727965171&width=1780"
+                    alt="Zoya Neutral Hijab"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <p class="product-type">GEORGETTE</p>
+
+                <h3>Zoya Neutral Hijab</h3>
+
+                <p class="price">PKR 849</p>
+
+                <button class="customize-btn">
+                    Customize & Add
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- HIJAB 4 -->
+
+        <article
+            class="product-card"
+            data-category="hijab"
+            data-type="hijab"
+            data-name="Mishal Chiffon Hijab"
+            data-price="949"
+            data-image="https://tasneemhijabhouse.com/cdn/shop/collections/DONE_1_1200x1200.jpg?v=1699436632"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://tasneemhijabhouse.com/cdn/shop/collections/DONE_1_1200x1200.jpg?v=1699436632"
+                    alt="Mishal Chiffon Hijab"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <p class="product-type">CHIFFON</p>
+
+                <h3>Mishal Chiffon Hijab</h3>
+
+                <p class="price">PKR 949</p>
+
+                <button class="customize-btn">
+                    Customize & Add
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FABRIC BANNER ================= -->
+
+<section class="fabric-banner">
+
+    <div class="fabric-image"></div>
+
+    <div class="fabric-content">
+
+        <p class="eyebrow">THE ELAF FABRIC EDIT</p>
+
+        <h2>Choose the feel that suits you.</h2>
+
+        <p>
+            From elegant Georgette to smooth Korean fabric,
+            every choice is designed to make your modest style
+            feel personal.
+        </p>
+
+        <a href="#abayas" class="btn btn-light">
+            Explore Fabrics
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OCCASION ================= -->
+
+<section class="occasion section" id="occasion">
+
+    <div class="section-title">
+
+        <p class="eyebrow">SPECIAL MOMENTS</p>
+
+        <h2>Occasion Edit</h2>
+
+        <p>
+            Elegant silhouettes for gatherings,
+            celebrations and memorable moments.
+        </p>
 
     </div>
 
@@ -669,13 +691,13 @@
 
 <!-- ================= STORY ================= -->
 
-<section class="story section-padding" id="story">
+<section class="story section" id="story">
 
     <div class="story-image">
 
         <img
-            src="https://s.alicdn.com/%40sc04/kf/H305b2df6aee34366a69d737ce1c2b973k/HANO-Wholesale-Dubai-Solid-Color-Simple-Modest-Musulman-Islamic-Clothing-Black-Abaya-Muslim-Dresses-for-Women-Abaya.jpg"
-            alt="ELAF Abaya Collection"
+            src="https://hasanatboutique.com/cdn/shop/files/21_05455fea-6c8c-41cf-8f78-1a702d2a02ef.png?v=1771875713&width=1200"
+            alt="ELAF modest fashion"
         >
 
     </div>
@@ -683,34 +705,22 @@
 
     <div class="story-content">
 
-        <span class="eyebrow">
-            OUR STORY
-        </span>
+        <p class="eyebrow">OUR STORY</p>
 
-        <h2>
-            Created with
-            <em>intention.</em>
-        </h2>
+        <h2>Created for graceful everyday living.</h2>
 
         <p>
-            ELAF was imagined for women who believe that
-            modesty and elegance belong together.
+            ELAF is built around a simple idea:
+            modest fashion can be elegant, modern and deeply personal.
         </p>
 
         <p>
-            Our vision is simple:
-            create beautifully flowing abayas and modest
-            pieces that feel graceful, comfortable and
-            timeless.
+            We believe every woman should be able to choose
+            the colours, fabrics and details that make her
+            feel comfortable and confident.
         </p>
 
-        <p>
-            Every collection is inspired by soft textures,
-            thoughtful silhouettes and the quiet beauty
-            of modest fashion.
-        </p>
-
-        <a href="#new-arrivals" class="text-link">
+        <a href="#home" class="text-link">
             Discover ELAF →
         </a>
 
@@ -721,81 +731,43 @@
 
 <!-- ================= VALUES ================= -->
 
-<section class="values section-padding">
+<section class="values section">
 
-    <div class="section-heading">
+    <div class="value-card">
 
-        <div>
+        <span>01</span>
 
-            <span class="eyebrow">
-                THE ELAF STANDARD
-            </span>
+        <h3>Timeless</h3>
 
-            <h2>
-                Made for modest moments.
-            </h2>
-
-        </div>
+        <p>
+            Designs that remain elegant beyond seasons.
+        </p>
 
     </div>
 
 
-    <div class="values-grid">
+    <div class="value-card">
 
-        <div class="value-card">
+        <span>02</span>
 
-            <span>01</span>
+        <h3>Personal</h3>
 
-            <h3>Modest by Design</h3>
+        <p>
+            Your choice of colour, fabric and length.
+        </p>
 
-            <p>
-                Thoughtful silhouettes created
-                around graceful coverage.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="value-card">
+    <div class="value-card">
 
-            <span>02</span>
+        <span>03</span>
 
-            <h3>Elegant Fabrics</h3>
+        <h3>Modest</h3>
 
-            <p>
-                Georgette, Korean fabric and
-                carefully selected textures.
-            </p>
-
-        </div>
-
-
-        <div class="value-card">
-
-            <span>03</span>
-
-            <h3>Timeless Style</h3>
-
-            <p>
-                Pieces designed to remain
-                beautiful beyond trends.
-            </p>
-
-        </div>
-
-
-        <div class="value-card">
-
-            <span>04</span>
-
-            <h3>Made for Her</h3>
-
-            <p>
-                Comfort and elegance brought
-                together in every detail.
-            </p>
-
-        </div>
+        <p>
+            Fashion designed around graceful coverage.
+        </p>
 
     </div>
 
@@ -806,95 +778,51 @@
 
 <section class="newsletter">
 
-    <div class="newsletter-content">
+    <p class="eyebrow">JOIN THE ELAF JOURNAL</p>
 
-        <span class="eyebrow">
-            STAY IN THE ELAF CIRCLE
-        </span>
+    <h2>Quiet luxury, delivered.</h2>
 
-        <h2>
-            A little elegance,
-            straight to your inbox.
-        </h2>
+    <p>
+        Subscribe for new collections and ELAF updates.
+    </p>
 
-        <p>
-            Receive new collection updates,
-            modest style inspiration and ELAF news.
-        </p>
+    <form id="newsletterForm">
 
+        <input
+            type="email"
+            id="newsletterEmail"
+            placeholder="Your email address"
+            required
+        >
 
-        <form id="newsletterForm">
+        <button type="submit">
+            Subscribe
+        </button>
 
-            <input
-                type="email"
-                id="emailInput"
-                placeholder="Your email address"
-                required
-            >
-
-            <button type="submit">
-                Subscribe
-            </button>
-
-        </form>
-
-    </div>
+    </form>
 
 </section>
 
 
 <!-- ================= FOOTER ================= -->
 
-<footer class="footer">
+<footer>
 
-    <div class="footer-top">
+    <div class="footer-brand">
 
-        <div class="footer-brand">
+        <h2>ELAF</h2>
 
-            <h2>ELAF</h2>
+        <p>Elegance in Every Thread</p>
 
-            <p>
-                Elegance in Every Thread.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="footer-column">
+    <div class="footer-links">
 
-            <h4>Shop</h4>
-
-            <a href="#new-arrivals">Abayas</a>
-            <a href="#new-arrivals">Modest Wear</a>
-            <a href="#new-arrivals">New Arrivals</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>About</h4>
-
-            <a href="#story">Our Story</a>
-            <a href="#collections">Collections</a>
-            <a href="#story">Our Values</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>Contact</h4>
-
-            <a href="mailto:hello@elaf.com">
-                hello@elaf.com
-            </a>
-
-            <span>
-                Pakistan
-            </span>
-
-        </div>
+        <a href="#home">Home</a>
+        <a href="#abayas">Abayas</a>
+        <a href="#hijabs">Hijabs</a>
+        <a href="#story">Our Story</a>
 
     </div>
 
@@ -902,16 +830,219 @@
     <div class="footer-bottom">
 
         <p>
-            © 2026 ELAF. All rights reserved.
+            © 2026 ELAF. Portfolio Demo.
         </p>
 
         <p>
-            Elegance in Every Thread
+            Modesty • Elegance • Individuality
         </p>
 
     </div>
 
 </footer>
+
+
+<!-- ================= CUSTOMIZATION MODAL ================= -->
+
+<div class="modal-overlay" id="customizeModal">
+
+    <div class="customize-modal">
+
+        <button class="modal-close" id="closeCustomize">
+            ×
+        </button>
+
+
+        <div class="customize-image">
+
+            <img id="customizeImage" src="" alt="Product">
+
+        </div>
+
+
+        <div class="customize-details">
+
+            <p class="eyebrow" id="customizeType">
+                PRODUCT
+            </p>
+
+            <h2 id="customizeName">
+                Product Name
+            </h2>
+
+            <p class="modal-price" id="customizeBasePrice">
+                PKR 0
+            </p>
+
+
+            <!-- ABAYA OPTIONS -->
+
+            <div id="abayaOptions">
+
+                <div class="option-group">
+
+                    <label>Colour</label>
+
+                    <select id="abayaColor">
+
+                        <option>Black</option>
+                        <option>Chocolate Brown</option>
+                        <option>Beige</option>
+                        <option>Mocha</option>
+                        <option>Olive</option>
+                        <option>Maroon</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option-group">
+
+                    <label>Fabric</label>
+
+                    <select id="abayaFabric">
+
+                        <option value="0">Georgette — Included</option>
+                        <option value="800">Korean — + PKR 800</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option-group">
+
+                    <label>Length</label>
+
+                    <select id="abayaLength">
+
+                        <option value="0">Standard — Included</option>
+                        <option value="300">Long — + PKR 300</option>
+                        <option value="600">Extra Long — + PKR 600</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option-group">
+
+                    <label>Size</label>
+
+                    <select id="abayaSize">
+
+                        <option>XS</option>
+                        <option>S</option>
+                        <option selected>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                        <option>XXL</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- HIJAB OPTIONS -->
+
+            <div id="hijabOptions" class="hidden">
+
+                <div class="option-group">
+
+                    <label>Colour</label>
+
+                    <select id="hijabColor">
+
+                        <option>Black</option>
+                        <option>Beige</option>
+                        <option>Mocha</option>
+                        <option>Chocolate Brown</option>
+                        <option>Dusty Rose</option>
+                        <option>Olive</option>
+                        <option>Maroon</option>
+                        <option>Navy</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option-group">
+
+                    <label>Fabric</label>
+
+                    <select id="hijabFabric">
+
+                        <option value="0">Georgette — Included</option>
+                        <option value="150">Chiffon — + PKR 150</option>
+                        <option value="250">Premium Korean — + PKR 250</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option-group">
+
+                    <label>Length</label>
+
+                    <select id="hijabLength">
+
+                        <option value="0">Standard — Included</option>
+                        <option value="100">Long — + PKR 100</option>
+                        <option value="200">Extra Long — + PKR 200</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUANTITY -->
+
+            <div class="quantity-box">
+
+                <label>Quantity</label>
+
+                <div class="quantity-control">
+
+                    <button id="qtyMinus">−</button>
+
+                    <span id="quantityValue">1</span>
+
+                    <button id="qtyPlus">+</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="custom-total">
+
+                <span>Total</span>
+
+                <strong id="customTotal">
+                    PKR 0
+                </strong>
+
+            </div>
+
+
+            <button class="add-custom-btn" id="addCustomizedProduct">
+
+                Add to Bag
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- ================= BAG SIDEBAR ================= -->
@@ -922,24 +1053,29 @@
 
     <div class="bag-header">
 
-        <h2>Your Bag</h2>
+        <div>
 
-        <button id="closeBag">
-            ×
-        </button>
+            <p class="eyebrow">YOUR SELECTION</p>
+
+            <h2>Your Bag</h2>
+
+        </div>
+
+        <button id="closeBag">×</button>
 
     </div>
 
 
-    <div id="bagItems" class="bag-items">
+    <div class="bag-items" id="bagItems">
 
         <div class="empty-bag">
-            <span>○</span>
+
+            <div class="empty-icon">○</div>
 
             <h3>Your bag is empty</h3>
 
             <p>
-                Discover something beautiful from ELAF.
+                Choose an abaya or hijab to begin.
             </p>
 
         </div>
@@ -949,18 +1085,22 @@
 
     <div class="bag-footer">
 
-        <div class="bag-total">
+        <div class="bag-subtotal">
 
-            <span>Total</span>
+            <span>Subtotal</span>
 
-            <strong id="bagTotal">
+            <strong id="bagSubtotal">
                 PKR 0
             </strong>
 
         </div>
 
+        <p class="bag-note">
+            Delivery charges are calculated at checkout.
+        </p>
+
         <button class="checkout-btn" id="checkoutBtn">
-            Proceed to Checkout
+            Continue to Checkout
         </button>
 
     </div>
@@ -968,11 +1108,400 @@
 </aside>
 
 
+<!-- ================= CHECKOUT MODAL ================= -->
+
+<div class="modal-overlay" id="checkoutModal">
+
+    <div class="checkout-modal">
+
+        <button class="modal-close" id="closeCheckout">
+            ×
+        </button>
+
+
+        <div class="checkout-heading">
+
+            <p class="eyebrow">ELAF CHECKOUT</p>
+
+            <h2>Complete Your Order</h2>
+
+            <p>
+                Enter your delivery details and choose
+                your preferred delivery and payment method.
+            </p>
+
+        </div>
+
+
+        <div class="checkout-layout">
+
+
+            <!-- CUSTOMER DETAILS -->
+
+            <form id="checkoutForm" class="checkout-form">
+
+                <h3>Delivery Details</h3>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Full Name *</label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            required
+                            placeholder="Enter your full name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Phone Number *</label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            required
+                            placeholder="03XX XXXXXXX"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Complete Address *</label>
+
+                    <textarea
+                        id="customerAddress"
+                        required
+                        placeholder="House number, street, area..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>City *</label>
+
+                        <input
+                            type="text"
+                            id="customerCity"
+                            required
+                            placeholder="City"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Postal Code</label>
+
+                        <input
+                            type="text"
+                            id="postalCode"
+                            placeholder="Postal code"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- DELIVERY -->
+
+                <h3>Delivery Method</h3>
+
+
+                <div class="delivery-options">
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="delivery"
+                            value="250"
+                            data-name="Standard Delivery"
+                            checked
+                        >
+
+                        <span>
+
+                            <strong>Standard Delivery</strong>
+
+                            <small>
+                                3–5 working days
+                            </small>
+
+                        </span>
+
+                        <b>PKR 250</b>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="delivery"
+                            value="500"
+                            data-name="Express Delivery"
+                        >
+
+                        <span>
+
+                            <strong>Express Delivery</strong>
+
+                            <small>
+                                1–2 working days
+                            </small>
+
+                        </span>
+
+                        <b>PKR 500</b>
+
+                    </label>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <h3>Payment Method</h3>
+
+
+                <div class="payment-options">
+
+                    <label class="payment-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked
+                        >
+
+                        <span>
+
+                            <strong>Cash on Delivery</strong>
+
+                            <small>
+                                Pay when your order arrives.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="payment-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Bank Transfer"
+                        >
+
+                        <span>
+
+                            <strong>Bank Transfer</strong>
+
+                            <small>
+                                Demo payment option.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="payment-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Online Payment"
+                        >
+
+                        <span>
+
+                            <strong>Online Payment</strong>
+
+                            <small>
+                                Demo payment option.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="place-order-btn"
+                >
+                    Place Order
+                </button>
+
+            </form>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <div class="checkout-summary">
+
+                <h3>Order Summary</h3>
+
+                <div id="checkoutItems"></div>
+
+
+                <div class="summary-line">
+
+                    <span>Subtotal</span>
+
+                    <strong id="checkoutSubtotal">
+                        PKR 0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Delivery</span>
+
+                    <strong id="checkoutDelivery">
+                        PKR 250
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>Grand Total</span>
+
+                    <strong id="checkoutTotal">
+                        PKR 250
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ORDER CONFIRMATION ================= -->
+
+<div class="modal-overlay" id="confirmationModal">
+
+    <div class="confirmation-modal">
+
+        <div class="success-mark">
+            ✓
+        </div>
+
+        <p class="eyebrow">
+            ORDER CONFIRMED
+        </p>
+
+        <h2>Thank You for Choosing ELAF</h2>
+
+        <p>
+            Your order has been successfully placed.
+        </p>
+
+
+        <div class="order-number">
+
+            <span>Order Number</span>
+
+            <strong id="orderNumber">
+                ELAF-0000
+            </strong>
+
+        </div>
+
+
+        <div class="confirmation-details">
+
+            <div>
+                <span>Customer</span>
+                <strong id="confirmName"></strong>
+            </div>
+
+            <div>
+                <span>City</span>
+                <strong id="confirmCity"></strong>
+            </div>
+
+            <div>
+                <span>Delivery</span>
+                <strong id="confirmDelivery"></strong>
+            </div>
+
+            <div>
+                <span>Payment</span>
+                <strong id="confirmPayment"></strong>
+            </div>
+
+            <div>
+                <span>Total</span>
+                <strong id="confirmTotal"></strong>
+            </div>
+
+        </div>
+
+
+        <div class="confirmation-message">
+
+            Your order details have been recorded in this
+            portfolio demo. Thank you for visiting ELAF.
+
+        </div>
+
+
+        <button
+            class="continue-btn"
+            id="continueShopping"
+        >
+            Continue Shopping
+        </button>
+
+    </div>
+
+</div>
+
+
 <!-- ================= TOAST ================= -->
 
 <div class="toast" id="toast">
+
     <span>✓</span>
-    <p id="toastMessage">Added to bag</p>
+
+    <p id="toastMessage">
+        Added to bag
+    </p>
+
 </div>
 
 
