@@ -8,21 +8,16 @@
 ========================= */
 
 const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const closeMenu = document.getElementById("closeMenu");
+const navLinks = document.querySelector(".nav-links");
 
 menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.add("active");
+    navLinks.classList.toggle("active");
 });
 
-closeMenu.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-});
-
-document.querySelectorAll(".mobile-menu a").forEach(link => {
+document.querySelectorAll(".nav-links a").forEach(link => {
 
     link.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
+        navLinks.classList.remove("active");
     });
 
 });
@@ -36,43 +31,89 @@ const searchBtn = document.getElementById("searchBtn");
 const searchPanel = document.getElementById("searchPanel");
 const closeSearch = document.getElementById("closeSearch");
 const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
 searchBtn.addEventListener("click", () => {
 
-    searchPanel.classList.add("active");
+    searchPanel.classList.toggle("active");
 
-    setTimeout(() => {
-        searchInput.focus();
-    }, 200);
+    if (searchPanel.classList.contains("active")) {
+        setTimeout(() => {
+            searchInput.focus();
+        }, 300);
+    }
 
 });
+
 
 closeSearch.addEventListener("click", () => {
     searchPanel.classList.remove("active");
 });
 
 
+const products = [
+    "Noor Georgette Abaya",
+    "Meher Korean Abaya",
+    "Ayla Flowing Abaya",
+    "Raya Modest Abaya",
+    "Sahar Korean Abaya",
+    "Haya Signature Abaya"
+];
+
+
 searchInput.addEventListener("input", () => {
 
-    const searchValue =
-        searchInput.value.toLowerCase().trim();
+    const query = searchInput.value.toLowerCase().trim();
 
-    const products =
-        document.querySelectorAll(".product-card");
+    searchResults.innerHTML = "";
 
-    products.forEach(product => {
+    if (!query) {
+        return;
+    }
 
-        const productText =
-            product.innerText.toLowerCase();
+    const matches = products.filter(product =>
+        product.toLowerCase().includes(query)
+    );
 
-        if (
-            searchValue === "" ||
-            productText.includes(searchValue)
-        ) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
+    if (matches.length === 0) {
+
+        searchResults.innerHTML =
+            "<p>No ELAF products found.</p>";
+
+        return;
+    }
+
+    matches.forEach(product => {
+
+        const item = document.createElement("div");
+
+        item.className = "search-result-item";
+
+        item.textContent = product;
+
+        item.addEventListener("click", () => {
+
+            searchPanel.classList.remove("active");
+
+            const productCards =
+                document.querySelectorAll(".product-card");
+
+            productCards.forEach(card => {
+
+                if (card.dataset.name === product) {
+
+                    card.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+
+            });
+
+        });
+
+        searchResults.appendChild(item);
 
     });
 
@@ -80,13 +121,13 @@ searchInput.addEventListener("input", () => {
 
 
 /* =========================
-   PRODUCT FILTER
+   PRODUCT FILTERS
 ========================= */
 
 const filterButtons =
-    document.querySelectorAll(".filter");
+    document.querySelectorAll(".filter-btn");
 
-const products =
+const productCards =
     document.querySelectorAll(".product-card");
 
 
@@ -100,21 +141,24 @@ filterButtons.forEach(button => {
 
         button.classList.add("active");
 
-        const selected =
-            button.dataset.filter;
+        const filter = button.dataset.filter;
 
-        products.forEach(product => {
+        productCards.forEach(card => {
 
-            const category =
-                product.dataset.category;
+            const categories =
+                card.dataset.category.split(" ");
 
             if (
-                selected === "all" ||
-                category.includes(selected)
+                filter === "all" ||
+                categories.includes(filter)
             ) {
-                product.style.display = "";
+
+                card.style.display = "block";
+
             } else {
-                product.style.display = "none";
+
+                card.style.display = "none";
+
             }
 
         });
@@ -132,10 +176,16 @@ document.querySelectorAll(".wishlist").forEach(button => {
 
     button.addEventListener("click", () => {
 
-        if (button.textContent.trim() === "♡") {
-            button.textContent = "♥";
+        button.classList.toggle("active");
+
+        if (button.classList.contains("active")) {
+
+            showToast("Added to wishlist");
+
         } else {
-            button.textContent = "♡";
+
+            showToast("Removed from wishlist");
+
         }
 
     });
@@ -149,39 +199,26 @@ document.querySelectorAll(".wishlist").forEach(button => {
 
 let bag = [];
 
+
 const bagBtn = document.getElementById("bagBtn");
 const bagSidebar = document.getElementById("bagSidebar");
 const bagOverlay = document.getElementById("bagOverlay");
 const closeBag = document.getElementById("closeBag");
 
-const bagItems =
-    document.getElementById("bagItems");
-
-const bagCount =
-    document.getElementById("bagCount");
-
-const bagTotal =
-    document.getElementById("bagTotal");
+const bagItems = document.getElementById("bagItems");
+const bagCount = document.getElementById("bagCount");
+const bagTotal = document.getElementById("bagTotal");
 
 
-/* OPEN BAG */
-
-bagBtn.addEventListener("click", () => {
+function openBag() {
 
     bagSidebar.classList.add("active");
     bagOverlay.classList.add("active");
 
-});
+}
 
 
-/* CLOSE BAG */
-
-closeBag.addEventListener("click", closeBagPanel);
-
-bagOverlay.addEventListener("click", closeBagPanel);
-
-
-function closeBagPanel() {
+function closeBagSidebar() {
 
     bagSidebar.classList.remove("active");
     bagOverlay.classList.remove("active");
@@ -189,33 +226,53 @@ function closeBagPanel() {
 }
 
 
-/* ADD PRODUCT */
+bagBtn.addEventListener("click", openBag);
 
-document.querySelectorAll(".quick-add").forEach(button => {
+closeBag.addEventListener("click", closeBagSidebar);
+
+bagOverlay.addEventListener("click", closeBagSidebar);
+
+
+/* =========================
+   ADD TO BAG
+========================= */
+
+document.querySelectorAll(".add-btn").forEach(button => {
 
     button.addEventListener("click", () => {
 
-        const name =
-            button.dataset.name;
+        const name = button.dataset.product;
+        const price = Number(button.dataset.price);
 
-        const price =
-            Number(button.dataset.price);
+        const existing =
+            bag.find(item => item.name === name);
 
-        bag.push({
-            name: name,
-            price: price
-        });
+        if (existing) {
+
+            existing.quantity++;
+
+        } else {
+
+            bag.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+
+        }
 
         updateBag();
 
-        showToast(`${name} added to your bag.`);
+        showToast(`${name} added to bag`);
 
     });
 
 });
 
 
-/* UPDATE BAG */
+/* =========================
+   UPDATE BAG
+========================= */
 
 function updateBag() {
 
@@ -224,50 +281,79 @@ function updateBag() {
     if (bag.length === 0) {
 
         bagItems.innerHTML = `
-            <p class="empty-bag">
-                Your bag is currently empty.
-            </p>
+            <div class="empty-bag">
+
+                <span>○</span>
+
+                <h3>Your bag is empty</h3>
+
+                <p>
+                    Discover something beautiful from ELAF.
+                </p>
+
+            </div>
         `;
 
-    } else {
+        bagCount.textContent = "0";
 
-        bag.forEach((item, index) => {
+        bagTotal.textContent = "PKR 0";
 
-            const itemElement =
-                document.createElement("div");
-
-            itemElement.className = "bag-item";
-
-            itemElement.innerHTML = `
-
-                <div>
-                    <h4>${item.name}</h4>
-                    <p>PKR ${item.price.toLocaleString()}</p>
-                </div>
-
-                <button
-                    class="remove-item"
-                    data-index="${index}">
-                    Remove
-                </button>
-
-            `;
-
-            bagItems.appendChild(itemElement);
-
-        });
-
+        return;
     }
 
 
-    const total =
-        bag.reduce(
-            (sum, item) => sum + item.price,
-            0
-        );
+    let total = 0;
+    let count = 0;
 
 
-    bagCount.textContent = bag.length;
+    bag.forEach((item, index) => {
+
+        total += item.price * item.quantity;
+
+        count += item.quantity;
+
+
+        const bagItem =
+            document.createElement("div");
+
+        bagItem.className = "bag-item";
+
+
+        bagItem.innerHTML = `
+
+            <img
+                class="bag-item-image"
+                src="https://s.alicdn.com/%40sc04/kf/H305b2df6aee34366a69d737ce1c2b973k/HANO-Wholesale-Dubai-Solid-Color-Simple-Modest-Musulman-Islamic-Clothing-Black-Abaya-Muslim-Dresses-for-Women-Abaya.jpg"
+                alt="${item.name}"
+            >
+
+            <div>
+
+                <h4>${item.name}</h4>
+
+                <p>
+                    PKR ${item.price.toLocaleString()}
+                    × ${item.quantity}
+                </p>
+
+            </div>
+
+            <button
+                class="remove-item"
+                data-index="${index}"
+            >
+                REMOVE
+            </button>
+
+        `;
+
+
+        bagItems.appendChild(bagItem);
+
+    });
+
+
+    bagCount.textContent = count;
 
     bagTotal.textContent =
         `PKR ${total.toLocaleString()}`;
@@ -293,19 +379,81 @@ function updateBag() {
 
 
 /* =========================
+   CHECKOUT
+========================= */
+
+const checkoutBtn =
+    document.getElementById("checkoutBtn");
+
+
+checkoutBtn.addEventListener("click", () => {
+
+    if (bag.length === 0) {
+
+        showToast("Your bag is empty");
+
+        return;
+
+    }
+
+    showToast(
+        "Checkout will be available soon."
+    );
+
+});
+
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+const newsletterForm =
+    document.getElementById("newsletterForm");
+
+
+newsletterForm.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("emailInput").value.trim();
+
+    if (!email) {
+        return;
+    }
+
+    showToast(
+        "Welcome to the ELAF circle."
+    );
+
+    newsletterForm.reset();
+
+});
+
+
+/* =========================
    TOAST
 ========================= */
 
+const toast =
+    document.getElementById("toast");
+
+const toastMessage =
+    document.getElementById("toastMessage");
+
+
+let toastTimer;
+
+
 function showToast(message) {
 
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = message;
+    toastMessage.textContent = message;
 
     toast.classList.add("show");
 
-    setTimeout(() => {
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
 
         toast.classList.remove("show");
 
@@ -315,71 +463,22 @@ function showToast(message) {
 
 
 /* =========================
-   CHECKOUT
+   NAVBAR SCROLL
 ========================= */
 
-document
-    .getElementById("checkoutBtn")
-    .addEventListener("click", () => {
+const navbar =
+    document.querySelector(".navbar");
 
-        if (bag.length === 0) {
-
-            showToast("Your bag is empty.");
-
-            return;
-
-        }
-
-        showToast(
-            "Checkout will be available soon."
-        );
-
-    });
-
-
-/* =========================
-   NEWSLETTER
-========================= */
-
-document
-    .getElementById("newsletterForm")
-    .addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        const email =
-            document.getElementById("newsletterEmail");
-
-        if (email.value.trim() !== "") {
-
-            showToast(
-                "Welcome to the ELAF world."
-            );
-
-            email.value = "";
-
-        }
-
-    });
-
-
-/* =========================
-   NAVBAR SCROLL EFFECT
-========================= */
 
 window.addEventListener("scroll", () => {
 
-    const navbar =
-        document.querySelector(".navbar");
+    if (window.scrollY > 40) {
 
-    if (window.scrollY > 30) {
-
-        navbar.style.boxShadow =
-            "0 5px 25px rgba(33,28,24,0.08)";
+        navbar.classList.add("scrolled");
 
     } else {
 
-        navbar.style.boxShadow = "none";
+        navbar.classList.remove("scrolled");
 
     }
 
@@ -394,7 +493,9 @@ document.querySelectorAll("img").forEach(img => {
 
     img.addEventListener("error", () => {
 
-        img.style.background = "#d8c7b3";
+        img.style.background = "#d9cabc";
+
+        img.style.objectFit = "cover";
 
     });
 
