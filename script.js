@@ -1,449 +1,68 @@
-/* =========================
-   ELAF - JAVASCRIPT
-========================= */
+/* =========================================================
+   ELAF - COMPLETE ECOMMERCE DEMO
+   ========================================================= */
 
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* ================= GLOBAL DATA ================= */
+
+let bag = JSON.parse(localStorage.getItem("elafBag")) || [];
+
+let currentProduct = null;
+
+let currentQuantity = 1;
+
+
+/* ================= ELEMENTS ================= */
+
+const navbar = document.getElementById("navbar");
 
 const menuBtn = document.getElementById("menuBtn");
+
 const navLinks = document.querySelector(".nav-links");
 
-menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-    });
-
-});
-
-
-/* =========================
-   SEARCH
-========================= */
-
 const searchBtn = document.getElementById("searchBtn");
+
 const searchPanel = document.getElementById("searchPanel");
+
 const closeSearch = document.getElementById("closeSearch");
+
 const searchInput = document.getElementById("searchInput");
-const searchResults = document.getElementById("searchResults");
-
-searchBtn.addEventListener("click", () => {
-
-    searchPanel.classList.toggle("active");
-
-    if (searchPanel.classList.contains("active")) {
-        setTimeout(() => {
-            searchInput.focus();
-        }, 300);
-    }
-
-});
-
-
-closeSearch.addEventListener("click", () => {
-    searchPanel.classList.remove("active");
-});
-
-
-const products = [
-    "Noor Georgette Abaya",
-    "Meher Korean Abaya",
-    "Ayla Flowing Abaya",
-    "Raya Modest Abaya",
-    "Sahar Korean Abaya",
-    "Haya Signature Abaya"
-];
-
-
-searchInput.addEventListener("input", () => {
-
-    const query = searchInput.value.toLowerCase().trim();
-
-    searchResults.innerHTML = "";
-
-    if (!query) {
-        return;
-    }
-
-    const matches = products.filter(product =>
-        product.toLowerCase().includes(query)
-    );
-
-    if (matches.length === 0) {
-
-        searchResults.innerHTML =
-            "<p>No ELAF products found.</p>";
-
-        return;
-    }
-
-    matches.forEach(product => {
-
-        const item = document.createElement("div");
-
-        item.className = "search-result-item";
-
-        item.textContent = product;
-
-        item.addEventListener("click", () => {
-
-            searchPanel.classList.remove("active");
-
-            const productCards =
-                document.querySelectorAll(".product-card");
-
-            productCards.forEach(card => {
-
-                if (card.dataset.name === product) {
-
-                    card.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-
-                }
-
-            });
-
-        });
-
-        searchResults.appendChild(item);
-
-    });
-
-});
-
-
-/* =========================
-   PRODUCT FILTERS
-========================= */
-
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
-
-const productCards =
-    document.querySelectorAll(".product-card");
-
-
-filterButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        filterButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        const filter = button.dataset.filter;
-
-        productCards.forEach(card => {
-
-            const categories =
-                card.dataset.category.split(" ");
-
-            if (
-                filter === "all" ||
-                categories.includes(filter)
-            ) {
-
-                card.style.display = "block";
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
-
-});
-
-
-/* =========================
-   WISHLIST
-========================= */
-
-document.querySelectorAll(".wishlist").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        button.classList.toggle("active");
-
-        if (button.classList.contains("active")) {
-
-            showToast("Added to wishlist");
-
-        } else {
-
-            showToast("Removed from wishlist");
-
-        }
-
-    });
-
-});
-
-
-/* =========================
-   SHOPPING BAG
-========================= */
-
-let bag = [];
-
 
 const bagBtn = document.getElementById("bagBtn");
+
 const bagSidebar = document.getElementById("bagSidebar");
+
 const bagOverlay = document.getElementById("bagOverlay");
+
 const closeBag = document.getElementById("closeBag");
 
-const bagItems = document.getElementById("bagItems");
-const bagCount = document.getElementById("bagCount");
-const bagTotal = document.getElementById("bagTotal");
+const customizeModal = document.getElementById("customizeModal");
 
+const closeCustomize = document.getElementById("closeCustomize");
 
-function openBag() {
+const checkoutModal = document.getElementById("checkoutModal");
 
-    bagSidebar.classList.add("active");
-    bagOverlay.classList.add("active");
+const closeCheckout = document.getElementById("closeCheckout");
 
-}
+const confirmationModal =
+    document.getElementById("confirmationModal");
 
-
-function closeBagSidebar() {
-
-    bagSidebar.classList.remove("active");
-    bagOverlay.classList.remove("active");
-
-}
-
-
-bagBtn.addEventListener("click", openBag);
-
-closeBag.addEventListener("click", closeBagSidebar);
-
-bagOverlay.addEventListener("click", closeBagSidebar);
-
-
-/* =========================
-   ADD TO BAG
-========================= */
-
-document.querySelectorAll(".add-btn").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const name = button.dataset.product;
-        const price = Number(button.dataset.price);
-
-        const existing =
-            bag.find(item => item.name === name);
-
-        if (existing) {
-
-            existing.quantity++;
-
-        } else {
-
-            bag.push({
-                name: name,
-                price: price,
-                quantity: 1
-            });
-
-        }
-
-        updateBag();
-
-        showToast(`${name} added to bag`);
-
-    });
-
-});
-
-
-/* =========================
-   UPDATE BAG
-========================= */
-
-function updateBag() {
-
-    bagItems.innerHTML = "";
-
-    if (bag.length === 0) {
-
-        bagItems.innerHTML = `
-            <div class="empty-bag">
-
-                <span>○</span>
-
-                <h3>Your bag is empty</h3>
-
-                <p>
-                    Discover something beautiful from ELAF.
-                </p>
-
-            </div>
-        `;
-
-        bagCount.textContent = "0";
-
-        bagTotal.textContent = "PKR 0";
-
-        return;
-    }
-
-
-    let total = 0;
-    let count = 0;
-
-
-    bag.forEach((item, index) => {
-
-        total += item.price * item.quantity;
-
-        count += item.quantity;
-
-
-        const bagItem =
-            document.createElement("div");
-
-        bagItem.className = "bag-item";
-
-
-        bagItem.innerHTML = `
-
-            <img
-                class="bag-item-image"
-                src="https://s.alicdn.com/%40sc04/kf/H305b2df6aee34366a69d737ce1c2b973k/HANO-Wholesale-Dubai-Solid-Color-Simple-Modest-Musulman-Islamic-Clothing-Black-Abaya-Muslim-Dresses-for-Women-Abaya.jpg"
-                alt="${item.name}"
-            >
-
-            <div>
-
-                <h4>${item.name}</h4>
-
-                <p>
-                    PKR ${item.price.toLocaleString()}
-                    × ${item.quantity}
-                </p>
-
-            </div>
-
-            <button
-                class="remove-item"
-                data-index="${index}"
-            >
-                REMOVE
-            </button>
-
-        `;
-
-
-        bagItems.appendChild(bagItem);
-
-    });
-
-
-    bagCount.textContent = count;
-
-    bagTotal.textContent =
-        `PKR ${total.toLocaleString()}`;
-
-
-    document.querySelectorAll(".remove-item")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const index =
-                    Number(button.dataset.index);
-
-                bag.splice(index, 1);
-
-                updateBag();
-
-            });
-
-        });
-
-}
-
-
-/* =========================
-   CHECKOUT
-========================= */
-
-const checkoutBtn =
-    document.getElementById("checkoutBtn");
-
-
-checkoutBtn.addEventListener("click", () => {
-
-    if (bag.length === 0) {
-
-        showToast("Your bag is empty");
-
-        return;
-
-    }
-
-    showToast(
-        "Checkout will be available soon."
-    );
-
-});
-
-
-/* =========================
-   NEWSLETTER
-========================= */
-
-const newsletterForm =
-    document.getElementById("newsletterForm");
-
-
-newsletterForm.addEventListener("submit", event => {
-
-    event.preventDefault();
-
-    const email =
-        document.getElementById("emailInput").value.trim();
-
-    if (!email) {
-        return;
-    }
-
-    showToast(
-        "Welcome to the ELAF circle."
-    );
-
-    newsletterForm.reset();
-
-});
-
-
-/* =========================
-   TOAST
-========================= */
-
-const toast =
-    document.getElementById("toast");
+const toast = document.getElementById("toast");
 
 const toastMessage =
     document.getElementById("toastMessage");
 
 
-let toastTimer;
+/* ================= FORMAT PRICE ================= */
 
+function formatPrice(number) {
+
+    return "PKR " + Number(number).toLocaleString("en-PK");
+
+}
+
+
+/* ================= TOAST ================= */
 
 function showToast(message) {
 
@@ -451,9 +70,7 @@ function showToast(message) {
 
     toast.classList.add("show");
 
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
+    setTimeout(() => {
 
         toast.classList.remove("show");
 
@@ -462,17 +79,11 @@ function showToast(message) {
 }
 
 
-/* =========================
-   NAVBAR SCROLL
-========================= */
-
-const navbar =
-    document.querySelector(".navbar");
-
+/* ================= NAVBAR ================= */
 
 window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
 
         navbar.classList.add("scrolled");
 
@@ -485,25 +96,1141 @@ window.addEventListener("scroll", () => {
 });
 
 
-/* =========================
-   IMAGE FALLBACK
-========================= */
+/* ================= MOBILE MENU ================= */
 
-document.querySelectorAll("img").forEach(img => {
+menuBtn.addEventListener("click", () => {
 
-    img.addEventListener("error", () => {
+    navLinks.classList.toggle("active");
 
-        img.style.background = "#d9cabc";
+});
 
-        img.style.objectFit = "cover";
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
 
     });
 
 });
 
 
-/* =========================
-   INITIAL BAG
-========================= */
+/* ================= SEARCH ================= */
+
+searchBtn.addEventListener("click", () => {
+
+    searchPanel.classList.add("active");
+
+    searchInput.focus();
+
+});
+
+
+closeSearch.addEventListener("click", () => {
+
+    searchPanel.classList.remove("active");
+
+    searchInput.value = "";
+
+    showAllProducts();
+
+});
+
+
+searchInput.addEventListener("input", () => {
+
+    const searchValue =
+        searchInput.value.toLowerCase().trim();
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+
+        const name =
+            product.dataset.name.toLowerCase();
+
+        const category =
+            product.dataset.category.toLowerCase();
+
+        if (
+            name.includes(searchValue) ||
+            category.includes(searchValue)
+        ) {
+
+            product.classList.remove("hidden-card");
+
+        } else {
+
+            product.classList.add("hidden-card");
+
+        }
+
+    });
+
+});
+
+
+function showAllProducts() {
+
+    document.querySelectorAll(".product-card")
+        .forEach(product => {
+
+            product.classList.remove("hidden-card");
+
+        });
+
+}
+
+
+/* ================= PRODUCT FILTER ================= */
+
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        const products =
+            document.querySelectorAll("#abayaGrid .product-card");
+
+        products.forEach(product => {
+
+            const category =
+                product.dataset.category;
+
+            if (
+                filter === "all" ||
+                category === filter
+            ) {
+
+                product.classList.remove("hidden-card");
+
+            } else {
+
+                product.classList.add("hidden-card");
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* ================= CUSTOMIZATION ================= */
+
+const customizeButtons =
+    document.querySelectorAll(".customize-btn");
+
+
+customizeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const product =
+            button.closest(".product-card");
+
+        openCustomization(product);
+
+    });
+
+});
+
+
+function openCustomization(product) {
+
+    currentProduct = {
+
+        name: product.dataset.name,
+
+        price: Number(product.dataset.price),
+
+        type: product.dataset.type,
+
+        image: product.dataset.image
+
+    };
+
+    currentQuantity = 1;
+
+    document.getElementById("quantityValue")
+        .textContent = currentQuantity;
+
+
+    document.getElementById("customizeName")
+        .textContent = currentProduct.name;
+
+
+    document.getElementById("customizeType")
+        .textContent =
+        currentProduct.type === "abaya"
+            ? "ELAF ABAYA"
+            : "ELAF HIJAB";
+
+
+    document.getElementById("customizeImage")
+        .src = currentProduct.image;
+
+
+    document.getElementById("customizeBasePrice")
+        .textContent =
+        formatPrice(currentProduct.price);
+
+
+    if (currentProduct.type === "abaya") {
+
+        document
+            .getElementById("abayaOptions")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("hijabOptions")
+            .classList.add("hidden");
+
+    } else {
+
+        document
+            .getElementById("abayaOptions")
+            .classList.add("hidden");
+
+        document
+            .getElementById("hijabOptions")
+            .classList.remove("hidden");
+
+    }
+
+
+    updateCustomizationTotal();
+
+    customizeModal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+
+}
+
+
+/* ================= CUSTOMIZATION PRICE ================= */
+
+const optionInputs = [
+
+    document.getElementById("abayaFabric"),
+
+    document.getElementById("abayaLength"),
+
+    document.getElementById("hijabFabric"),
+
+    document.getElementById("hijabLength")
+
+];
+
+
+optionInputs.forEach(input => {
+
+    input.addEventListener("change", () => {
+
+        updateCustomizationTotal();
+
+    });
+
+});
+
+
+function updateCustomizationTotal() {
+
+    if (!currentProduct) return;
+
+
+    let extra = 0;
+
+
+    if (currentProduct.type === "abaya") {
+
+        extra += Number(
+            document.getElementById("abayaFabric").value
+        );
+
+        extra += Number(
+            document.getElementById("abayaLength").value
+        );
+
+    } else {
+
+        extra += Number(
+            document.getElementById("hijabFabric").value
+        );
+
+        extra += Number(
+            document.getElementById("hijabLength").value
+        );
+
+    }
+
+
+    const unitPrice =
+        currentProduct.price + extra;
+
+
+    const total =
+        unitPrice * currentQuantity;
+
+
+    document.getElementById("customTotal")
+        .textContent = formatPrice(total);
+
+}
+
+
+/* ================= QUANTITY ================= */
+
+document.getElementById("qtyMinus")
+    .addEventListener("click", () => {
+
+        if (currentQuantity > 1) {
+
+            currentQuantity--;
+
+            document.getElementById("quantityValue")
+                .textContent = currentQuantity;
+
+            updateCustomizationTotal();
+
+        }
+
+    });
+
+
+document.getElementById("qtyPlus")
+    .addEventListener("click", () => {
+
+        if (currentQuantity < 10) {
+
+            currentQuantity++;
+
+            document.getElementById("quantityValue")
+                .textContent = currentQuantity;
+
+            updateCustomizationTotal();
+
+        }
+
+    });
+
+
+/* ================= ADD CUSTOMIZED PRODUCT ================= */
+
+document
+    .getElementById("addCustomizedProduct")
+    .addEventListener("click", () => {
+
+
+        if (!currentProduct) return;
+
+
+        let options = {};
+
+        let extra = 0;
+
+
+        if (currentProduct.type === "abaya") {
+
+            const color =
+                document.getElementById("abayaColor").value;
+
+            const fabricSelect =
+                document.getElementById("abayaFabric");
+
+            const lengthSelect =
+                document.getElementById("abayaLength");
+
+            const size =
+                document.getElementById("abayaSize").value;
+
+
+            const fabric =
+                fabricSelect.options[
+                    fabricSelect.selectedIndex
+                ].text.split(" — ")[0];
+
+
+            const length =
+                lengthSelect.options[
+                    lengthSelect.selectedIndex
+                ].text.split(" — ")[0];
+
+
+            extra =
+                Number(fabricSelect.value) +
+                Number(lengthSelect.value);
+
+
+            options = {
+
+                color: color,
+
+                fabric: fabric,
+
+                length: length,
+
+                size: size
+
+            };
+
+        } else {
+
+
+            const color =
+                document.getElementById("hijabColor").value;
+
+            const fabricSelect =
+                document.getElementById("hijabFabric");
+
+            const lengthSelect =
+                document.getElementById("hijabLength");
+
+
+            const fabric =
+                fabricSelect.options[
+                    fabricSelect.selectedIndex
+                ].text.split(" — ")[0];
+
+
+            const length =
+                lengthSelect.options[
+                    lengthSelect.selectedIndex
+                ].text.split(" — ")[0];
+
+
+            extra =
+                Number(fabricSelect.value) +
+                Number(lengthSelect.value);
+
+
+            options = {
+
+                color: color,
+
+                fabric: fabric,
+
+                length: length
+
+            };
+
+        }
+
+
+        const unitPrice =
+            currentProduct.price + extra;
+
+
+        const item = {
+
+            id: Date.now(),
+
+            name: currentProduct.name,
+
+            type: currentProduct.type,
+
+            image: currentProduct.image,
+
+            basePrice: currentProduct.price,
+
+            unitPrice: unitPrice,
+
+            quantity: currentQuantity,
+
+            options: options
+
+        };
+
+
+        bag.push(item);
+
+        saveBag();
+
+        updateBag();
+
+
+        customizeModal.classList.remove("active");
+
+        document.body.classList.remove("modal-open");
+
+
+        showToast(
+            currentProduct.name + " added to your bag"
+        );
+
+
+        currentProduct = null;
+
+    });
+
+
+/* ================= CLOSE CUSTOMIZATION ================= */
+
+closeCustomize.addEventListener("click", () => {
+
+    customizeModal.classList.remove("active");
+
+    document.body.classList.remove("modal-open");
+
+});
+
+
+customizeModal.addEventListener("click", event => {
+
+    if (event.target === customizeModal) {
+
+        customizeModal.classList.remove("active");
+
+        document.body.classList.remove("modal-open");
+
+    }
+
+});
+
+
+/* ================= BAG ================= */
+
+function saveBag() {
+
+    localStorage.setItem(
+        "elafBag",
+        JSON.stringify(bag)
+    );
+
+}
+
+
+function getBagSubtotal() {
+
+    return bag.reduce((total, item) => {
+
+        return total +
+            (item.unitPrice * item.quantity);
+
+    }, 0);
+
+}
+
+
+function updateBagCount() {
+
+    const count =
+        bag.reduce(
+            (total, item) =>
+                total + item.quantity,
+            0
+        );
+
+    document.getElementById("bagCount")
+        .textContent = count;
+
+}
+
+
+function updateBag() {
+
+    updateBagCount();
+
+
+    const bagItems =
+        document.getElementById("bagItems");
+
+
+    if (bag.length === 0) {
+
+        bagItems.innerHTML = `
+
+            <div class="empty-bag">
+
+                <div class="empty-icon">○</div>
+
+                <h3>Your bag is empty</h3>
+
+                <p>
+                    Choose an abaya or hijab to begin.
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        bagItems.innerHTML = bag.map(item => `
+
+            <div class="bag-item">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                >
+
+                <div>
+
+                    <div class="bag-item-top">
+
+                        <div>
+
+                            <h4>${item.name}</h4>
+
+                            <p>
+                                Colour: ${item.options.color}
+                            </p>
+
+                            <p>
+                                Fabric: ${item.options.fabric}
+                            </p>
+
+                            <p>
+                                Length: ${item.options.length}
+                            </p>
+
+                            ${
+                                item.options.size
+                                ? `
+                                    <p>
+                                        Size: ${item.options.size}
+                                    </p>
+                                  `
+                                : ""
+                            }
+
+                        </div>
+
+                        <button
+                            class="remove-item"
+                            onclick="removeItem(${item.id})"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <p>
+                        ${formatPrice(item.unitPrice)}
+                        each
+                    </p>
+
+
+                    <div class="bag-qty">
+
+                        <button
+                            onclick="changeBagQuantity(${item.id}, -1)"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeBagQuantity(${item.id}, 1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+    }
+
+
+    document.getElementById("bagSubtotal")
+        .textContent =
+        formatPrice(getBagSubtotal());
+
+}
+
+
+/* ================= CHANGE BAG QUANTITY ================= */
+
+function changeBagQuantity(id, change) {
+
+    const item =
+        bag.find(item => item.id === id);
+
+    if (!item) return;
+
+
+    item.quantity += change;
+
+
+    if (item.quantity <= 0) {
+
+        bag =
+            bag.filter(item => item.id !== id);
+
+    }
+
+
+    if (item.quantity > 10) {
+
+        item.quantity = 10;
+
+    }
+
+
+    saveBag();
+
+    updateBag();
+
+    updateCheckoutSummary();
+
+}
+
+
+/* ================= REMOVE ITEM ================= */
+
+function removeItem(id) {
+
+    bag =
+        bag.filter(item => item.id !== id);
+
+    saveBag();
+
+    updateBag();
+
+    updateCheckoutSummary();
+
+    showToast("Item removed from bag");
+
+}
+
+
+/* ================= OPEN BAG ================= */
+
+bagBtn.addEventListener("click", () => {
+
+    bagSidebar.classList.add("active");
+
+    bagOverlay.classList.add("active");
+
+});
+
+
+closeBag.addEventListener("click", closeBagSidebar);
+
+bagOverlay.addEventListener("click", closeBagSidebar);
+
+
+function closeBagSidebar() {
+
+    bagSidebar.classList.remove("active");
+
+    bagOverlay.classList.remove("active");
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+document
+    .getElementById("checkoutBtn")
+    .addEventListener("click", () => {
+
+
+        if (bag.length === 0) {
+
+            showToast("Your bag is empty");
+
+            return;
+
+        }
+
+
+        updateCheckoutSummary();
+
+        closeBagSidebar();
+
+        checkoutModal.classList.add("active");
+
+        document.body.classList.add("modal-open");
+
+    });
+
+
+/* ================= CHECKOUT SUMMARY ================= */
+
+function updateCheckoutSummary() {
+
+    const checkoutItems =
+        document.getElementById("checkoutItems");
+
+
+    if (!checkoutItems) return;
+
+
+    checkoutItems.innerHTML =
+        bag.map(item => `
+
+            <div class="checkout-item">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                >
+
+                <div>
+
+                    <h4>${item.name}</h4>
+
+                    <p>
+                        ${item.options.color} •
+                        ${item.options.fabric}
+                    </p>
+
+                    <p>
+                        Length: ${item.options.length}
+                    </p>
+
+                    ${
+                        item.options.size
+                        ? `
+                            <p>
+                                Size: ${item.options.size}
+                            </p>
+                          `
+                        : ""
+                    }
+
+                    <p>
+                        Quantity: ${item.quantity}
+                    </p>
+
+                    <strong>
+                        ${formatPrice(
+                            item.unitPrice *
+                            item.quantity
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+
+    const subtotal =
+        getBagSubtotal();
+
+
+    const selectedDelivery =
+        document.querySelector(
+            'input[name="delivery"]:checked'
+        );
+
+
+    const delivery =
+        selectedDelivery
+            ? Number(selectedDelivery.value)
+            : 250;
+
+
+    document.getElementById("checkoutSubtotal")
+        .textContent =
+        formatPrice(subtotal);
+
+
+    document.getElementById("checkoutDelivery")
+        .textContent =
+        formatPrice(delivery);
+
+
+    document.getElementById("checkoutTotal")
+        .textContent =
+        formatPrice(subtotal + delivery);
+
+}
+
+
+/* ================= DELIVERY CHANGE ================= */
+
+document
+    .querySelectorAll('input[name="delivery"]')
+    .forEach(radio => {
+
+        radio.addEventListener("change", () => {
+
+            updateCheckoutSummary();
+
+        });
+
+    });
+
+
+/* ================= CLOSE CHECKOUT ================= */
+
+closeCheckout.addEventListener("click", () => {
+
+    checkoutModal.classList.remove("active");
+
+    document.body.classList.remove("modal-open");
+
+});
+
+
+checkoutModal.addEventListener("click", event => {
+
+    if (event.target === checkoutModal) {
+
+        checkoutModal.classList.remove("active");
+
+        document.body.classList.remove("modal-open");
+
+    }
+
+});
+
+
+/* ================= PLACE ORDER ================= */
+
+document
+    .getElementById("checkoutForm")
+    .addEventListener("submit", event => {
+
+        event.preventDefault();
+
+
+        if (bag.length === 0) {
+
+            showToast("Your bag is empty");
+
+            return;
+
+        }
+
+
+        const name =
+            document.getElementById("customerName")
+                .value.trim();
+
+
+        const phone =
+            document.getElementById("customerPhone")
+                .value.trim();
+
+
+        const address =
+            document.getElementById("customerAddress")
+                .value.trim();
+
+
+        const city =
+            document.getElementById("customerCity")
+                .value.trim();
+
+
+        const selectedDelivery =
+            document.querySelector(
+                'input[name="delivery"]:checked'
+            );
+
+
+        const selectedPayment =
+            document.querySelector(
+                'input[name="payment"]:checked'
+            );
+
+
+        const deliveryName =
+            selectedDelivery.dataset.name;
+
+
+        const deliveryCharge =
+            Number(selectedDelivery.value);
+
+
+        const paymentMethod =
+            selectedPayment.value;
+
+
+        const subtotal =
+            getBagSubtotal();
+
+
+        const grandTotal =
+            subtotal + deliveryCharge;
+
+
+        const orderNumber =
+            generateOrderNumber();
+
+
+        document.getElementById("orderNumber")
+            .textContent = orderNumber;
+
+
+        document.getElementById("confirmName")
+            .textContent = name;
+
+
+        document.getElementById("confirmCity")
+            .textContent = city;
+
+
+        document.getElementById("confirmDelivery")
+            .textContent =
+            deliveryName;
+
+
+        document.getElementById("confirmPayment")
+            .textContent =
+            paymentMethod;
+
+
+        document.getElementById("confirmTotal")
+            .textContent =
+            formatPrice(grandTotal);
+
+
+        checkoutModal.classList.remove("active");
+
+
+        confirmationModal.classList.add("active");
+
+
+        document.body.classList.add("modal-open");
+
+
+        bag = [];
+
+        saveBag();
+
+        updateBag();
+
+        document
+            .getElementById("checkoutForm")
+            .reset();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        console.log("ELAF DEMO ORDER", {
+
+            orderNumber,
+
+            customer: {
+                name,
+                phone,
+                address,
+                city
+            },
+
+            delivery: deliveryName,
+
+            deliveryCharge,
+
+            payment: paymentMethod,
+
+            products: bag,
+
+            total: grandTotal
+
+        });
+
+    });
+
+
+/* ================= ORDER NUMBER ================= */
+
+function generateOrderNumber() {
+
+    const random =
+        Math.floor(
+            1000 + Math.random() * 9000
+        );
+
+    const year =
+        new Date().getFullYear();
+
+    return `ELAF-${year}-${random}`;
+
+}
+
+
+/* ================= CONTINUE SHOPPING ================= */
+
+document
+    .getElementById("continueShopping")
+    .addEventListener("click", () => {
+
+        confirmationModal.classList.remove("active");
+
+        document.body.classList.remove("modal-open");
+
+        window.location.href = "#home";
+
+    });
+
+
+/* ================= NEWSLETTER ================= */
+
+document
+    .getElementById("newsletterForm")
+    .addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("newsletterEmail")
+                .value.trim();
+
+        if (!email) return;
+
+        showToast(
+            "Thank you for joining the ELAF Journal"
+        );
+
+        document
+            .getElementById("newsletterForm")
+            .reset();
+
+    });
+
+
+/* ================= IMAGE FALLBACK ================= */
+
+document
+    .querySelectorAll("img")
+    .forEach(image => {
+
+        image.addEventListener("error", () => {
+
+            image.style.background = "#ddd1c4";
+
+            image.style.minHeight = "200px";
+
+        });
+
+    });
+
+
+/* ================= INITIAL LOAD ================= */
 
 updateBag();
+
