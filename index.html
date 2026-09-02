@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ELAF | Elegance in Every Thread</title>
+
+    <meta name="description"
+        content="ELAF — Elegance in Every Thread. Discover elegant abayas and modest fashion crafted for the modern Muslim woman.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a href="#" class="logo">ELAF</a>
+
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#new-arrivals">New Arrivals</a>
+        <a href="#about">Our Story</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button id="searchBtn" aria-label="Search">⌕</button>
+        <button id="bagBtn" aria-label="Shopping bag">
+            Bag <span id="bagCount">0</span>
+        </button>
+        <button id="menuBtn" class="menu-btn">☰</button>
+    </div>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <button id="closeMenu" class="close-menu">×</button>
+
+    <a href="#home">Home</a>
+    <a href="#collections">Collections</a>
+    <a href="#new-arrivals">New Arrivals</a>
+    <a href="#about">Our Story</a>
+
+</div>
+
+
+<!-- ================= SEARCH PANEL ================= -->
+
+<div class="search-panel" id="searchPanel">
+
+    <button id="closeSearch">×</button>
+
+    <div class="search-box">
+
+        <span>Search ELAF</span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search abayas, dresses, hijabs..."
+        >
+
+    </div>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <p class="hero-small">MODEST FASHION • PAKISTAN</p>
+
+        <h1>ELAF</h1>
+
+        <div class="hero-line"></div>
+
+        <p class="hero-tagline">
+            Elegance in Every Thread
+        </p>
+
+        <p class="hero-description">
+            Modesty, beautifully reimagined.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#new-arrivals" class="btn btn-dark">
+                Shop Collection
+            </a>
+
+            <a href="#collections" class="btn btn-light">
+                Explore ELAF
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="intro">
+
+    <p class="section-label">THE ELAF EDIT</p>
+
+    <h2>
+        Modest fashion,<br>
+        <em>beautifully refined.</em>
+    </h2>
+
+    <p>
+        Designed for Muslim women who believe modesty and elegance
+        belong together. ELAF brings together graceful silhouettes,
+        rich neutral tones and thoughtfully selected fabrics.
+    </p>
+
+</section>
+
+
+<!-- ================= COLLECTIONS ================= -->
+
+<section class="collections-section" id="collections">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="section-label">SHOP BY COLLECTION</p>
+            <h2>Find Your <em>ELAF</em></h2>
+        </div>
+
+        <p class="heading-text">
+            From everyday elegance to timeless occasion wear,
+            discover pieces designed for graceful living.
+        </p>
+
+    </div>
+
+
+    <div class="collection-grid">
+
+        <a href="#new-arrivals" class="collection-card collection-large">
+
+            <img
+                src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=85"
+                alt="Elegant modest fashion"
+            >
+
+            <div class="collection-content">
+                <span>01</span>
+                <h3>Abayas</h3>
+                <p>Graceful silhouettes for every occasion.</p>
+                <strong>Explore →</strong>
+            </div>
+
+        </a>
+
+
+        <a href="#new-arrivals" class="collection-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1000&q=85"
+                alt="Modest clothing"
+            >
+
+            <div class="collection-content">
+                <span>02</span>
+                <h3>Modest Wear</h3>
+                <p>Effortless everyday elegance.</p>
+                <strong>Explore →</strong>
+            </div>
+
+        </a>
+
+
+        <a href="#new-arrivals" class="collection-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=85"
+                alt="Elegant clothing"
+            >
+
+            <div class="collection-content">
+                <span>03</span>
+                <h3>Occasion Edit</h3>
+                <p>Pieces made for meaningful moments.</p>
+                <strong>Explore →</strong>
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FABRIC BANNER ================= -->
+
+<section class="fabric-banner">
+
+    <div class="fabric-content">
+
+        <p class="section-label">OUR SIGNATURE FABRICS</p>
+
+        <h2>
+            Soft textures.<br>
+            <em>Beautiful drape.</em>
+        </h2>
+
+        <p>
+            Discover our carefully selected Georgette and Korean
+            fabric collections, chosen for their elegant fall,
+            comfort and sophisticated finish.
+        </p>
+
+        <a href="#new-arrivals" class="text-link">
+            Discover Fabrics →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEW ARRIVALS ================= -->
+
+<section class="products-section" id="new-arrivals">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="section-label">JUST IN</p>
+            <h2>New <em>Arrivals</em></h2>
+        </div>
+
+        <div class="filter-buttons">
+
+            <button class="filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter" data-filter="abaya">
+                Abayas
+            </button>
+
+            <button class="filter" data-filter="georgette">
+                Georgette
+            </button>
+
+            <button class="filter" data-filter="korean">
+                Korean
+            </button>
+
+            <button class="filter" data-filter="modest">
+                Modest Wear
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="products-grid" id="productsGrid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="product-card"
+            data-category="abaya georgette">
+
+            <div class="product-image">
+
+                <span class="product-tag">NEW</span>
+
+                <button class="wishlist">♡</button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=85"
+                    alt="Noor Georgette Abaya"
+                >
+
+                <button
+                    class="quick-add"
+                    data-name="Noor Georgette Abaya"
+                    data-price="6490">
+                    Add to Bag
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <p>GEORGETTE • ABAYA</p>
+
+                <h3>Noor Georgette Abaya</h3>
+
+                <span>PKR 6,490</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="product-card"
+            data-category="abaya korean">
+
+            <div class="product-image">
+
+                <span class="product-tag">BESTSELLER</span>
+
+                <button class="wishlist">♡</button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85"
+                    alt="Meher Korean Abaya"
+                >
+
+                <button
+                    class="quick-add"
+                    data-name="Meher Korean Abaya"
+                    data-price="7290">
+                    Add to Bag
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <p>KOREAN • ABAYA</p>
+
+                <h3>Meher Korean Abaya</h3>
+
+                <span>PKR 7,290</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="product-card"
+            data-category="abaya georgette">
+
+            <div class="product-image">
+
+                <button class="wishlist">♡</button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=900&q=85"
+                    alt="Ayla Flowing Abaya"
+                >
+
+                <button
+                    class="quick-add"
+                    data-name="Ayla Flowing Abaya"
+                    data-price="6890">
+                    Add to Bag
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <p>GEORGETTE • ABAYA</p>
+
+                <h3>Ayla Flowing Abaya</h3>
+
+                <span>PKR 6,890</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article class="product-card"
+            data-category="modest korean">
+
+            <div class="product-image">
+
+                <span class="product-tag">NEW</span>
+
+                <button class="wishlist">♡</button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+                    alt="Raya Modest Set"
+                >
+
+                <button
+                    class="quick-add"
+                    data-name="Raya Modest Set"
+                    data-price="5890">
+                    Add to Bag
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <p>KOREAN • MODEST WEAR</p>
+
+                <h3>Raya Modest Set</h3>
+
+                <span>PKR 5,890</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 5 -->
+
+        <article class="product-card"
+            data-category="abaya korean">
+
+            <div class="product-image">
+
+                <button class="wishlist">♡</button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=900&q=85"
+                    alt="Sahar Korean Abaya"
+                >
+
+                <button
+                    class="quick-add"
+                    data-name="Sahar Korean Abaya"
+                    data-price="7590">
+                    Add to Bag
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <p>KOREAN • ABAYA</p>
+
+                <h3>Sahar Korean Abaya</h3>
+
+                <span>PKR 7,590</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 6 -->
+
+        <article class="product-card"
+            data-category="abaya georgette">
+
+            <div class="product-image">
+
+                <span class="product-tag">LIMITED</span>
+
+                <button class="wishlist">♡</button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+                    alt="Haya Georgette Abaya"
+                >
+
+                <button
+                    class="quick-add"
+                    data-name="Haya Georgette Abaya"
+                    data-price="7990">
+                    Add to Bag
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <p>GEORGETTE • ABAYA</p>
+
+                <h3>Haya Georgette Abaya</h3>
+
+                <span>PKR 7,990</span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BRAND STORY ================= -->
+
+<section class="story-section" id="about">
+
+    <div class="story-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85"
+            alt="ELAF modest fashion"
+        >
+
+    </div>
+
+    <div class="story-content">
+
+        <p class="section-label">THE ELAF STORY</p>
+
+        <h2>
+            Modesty is not a limitation.
+            <em>It is an expression.</em>
+        </h2>
+
+        <p>
+            ELAF was created with a simple belief — modest fashion
+            can be graceful, contemporary and deeply personal.
+        </p>
+
+        <p>
+            Every collection is inspired by timeless silhouettes,
+            understated colours and the beauty of effortless dressing.
+        </p>
+
+        <a href="#collections" class="text-link">
+            Discover Our Story →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= VALUES ================= -->
+
+<section class="values-section">
+
+    <div class="value">
+
+        <span>01</span>
+
+        <h3>Modest by Design</h3>
+
+        <p>
+            Thoughtful silhouettes created with graceful coverage
+            in mind.
+        </p>
+
+    </div>
+
+
+    <div class="value">
+
+        <span>02</span>
+
+        <h3>Elegant Fabrics</h3>
+
+        <p>
+            A curated focus on Georgette and Korean fabrics.
+        </p>
+
+    </div>
+
+
+    <div class="value">
+
+        <span>03</span>
+
+        <h3>Timeless Style</h3>
+
+        <p>
+            Pieces designed to remain beautiful beyond a single season.
+        </p>
+
+    </div>
+
+
+    <div class="value">
+
+        <span>04</span>
+
+        <h3>Made for Her</h3>
+
+        <p>
+            Fashion created for women who value modesty and individuality.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <p class="section-label">JOIN THE ELAF WORLD</p>
+
+    <h2>
+        Stay in the <em>know.</em>
+    </h2>
+
+    <p>
+        Receive new collection updates, styling inspiration
+        and exclusive ELAF announcements.
+    </p>
+
+    <form id="newsletterForm">
+
+        <input
+            type="email"
+            id="newsletterEmail"
+            placeholder="Your email address"
+            required
+        >
+
+        <button type="submit">
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <h2>ELAF</h2>
+
+            <p>Elegance in Every Thread.</p>
+
+            <p class="footer-description">
+                A modern modest fashion destination
+                inspired by timeless elegance.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>SHOP</h4>
+
+            <a href="#new-arrivals">New Arrivals</a>
+            <a href="#new-arrivals">Abayas</a>
+            <a href="#new-arrivals">Modest Wear</a>
+            <a href="#new-arrivals">Georgette</a>
+            <a href="#new-arrivals">Korean Fabric</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>ELAF</h4>
+
+            <a href="#about">Our Story</a>
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">Size Guide</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>FOLLOW</h4>
+
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">Facebook</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ELAF. All Rights Reserved.
+        </p>
+
+        <p>
+            Elegance in Every Thread.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= BAG SIDEBAR ================= -->
+
+<div class="bag-overlay" id="bagOverlay"></div>
+
+<aside class="bag-sidebar" id="bagSidebar">
+
+    <div class="bag-header">
+
+        <h2>Your Bag</h2>
+
+        <button id="closeBag">×</button>
+
+    </div>
+
+    <div id="bagItems" class="bag-items">
+
+        <p class="empty-bag">
+            Your bag is currently empty.
+        </p>
+
+    </div>
+
+    <div class="bag-footer">
+
+        <div class="bag-total">
+
+            <span>Total</span>
+            <strong id="bagTotal">PKR 0</strong>
+
+        </div>
+
+        <button class="checkout-btn" id="checkoutBtn">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+    Added to your bag.
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
